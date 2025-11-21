@@ -138,6 +138,60 @@
     margin-top:10px;
     color:#a3e635
     }
+    /* ▼ 추가: 스마트폰 최적화 */
+@media (max-width: 768px) {
+  header{
+    max-width: 100%;
+    margin: 20px auto 12px;
+    padding: 0 12px;
+  }
+  h1{ font-size: 20px; }
+  .sub{ font-size: 13px; }
+
+  .wrap{
+    max-width: 100%;
+    padding: 0 12px 28px;
+    display: grid;
+    grid-template-columns: 1fr; /* 단일 컬럼 */
+    gap: 12px;
+  }
+
+  /* 폼/버튼 배치 */
+  .row{
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .row input[type="number"],
+  .row input[list],
+  #location-input{
+    width: 100% !important;   /* 고정폭 덮어쓰기 */
+    flex: 1 1 100%;
+    min-width: 0;
+    font-size: 16px;          /* iOS 확대 방지 */
+  }
+  .row button{
+    flex: 1 1 calc(50% - 8px); /* 2개면 1열에 두 개 */
+  }
+  /* 타이머 제어 3버튼은 세로 스택 */
+  #pause, #resume, #reset{
+    flex: 1 1 100%;
+  }
+
+  /* 진행바/카드 여백 조정 */
+  .progress{ height: 12px; }
+  .post-container{ padding: 6px; }
+  .card{ padding: 12px; }
+  .meta{ gap: 6px; }
+  .chip{ padding: 3px 6px; }
+}
+
+/* 아주 작은 화면용(선택) */
+@media (max-width: 420px) {
+  h1{ font-size: 19px; }
+  .sub{ font-size: 12px; }
+  .row button{ flex: 1 1 100%; } /* 버튼도 한 줄 한 개 */
+}
+
 </style>
 </head>
 <body>
@@ -150,7 +204,7 @@
     <section class="panel" id="controller">
       <h2>1) 残り時間・進行</h2>
       <div class="row">
-        <input id="minutes" type="number" min="1" step="1" placeholder="残り時間（分）" />
+        <input id="minutes" type="number" min="1" step="1" placeholder="分入力" />
         <button id="start" class="primary">開始</button>
       </div>
 
